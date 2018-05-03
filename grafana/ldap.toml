@@ -1,0 +1,21 @@
+verbose_logging = true
+
+[[servers]]
+host = "ldap.xxxx.xxx"
+port = 389
+use_ssl = false
+start_tls = false
+ssl_skip_verify = false
+
+bind_dn = "cn=..,ou=..,o=.."
+bind_password = '...'
+
+search_filter = "(&(uid=%s)(objectclass=person))"
+search_base_dns = ["ou=...,o=..."]
+
+[servers.attributes]
+name = "displayName"
+surname = "sn"
+username = "uid"
+member_of = "cn"
+email =  "mail"
