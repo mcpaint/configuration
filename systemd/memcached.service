@@ -1,0 +1,13 @@
+[Unit]
+Description=Memcached service
+Documentation=https://github.com/memcached/memcached/wiki
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/mcpaint/program/memcached/bin/memcached \
+            -u www -p 11211 -c 40960 -t 4 -m 8192 -v \
+            >> /mcpaint/logs/memcached/memcached.log 2>&1
+
+[Install]
+WantedBy=multi-user.target
