@@ -1,0 +1,14 @@
+[Unit]
+Description=Grafana service
+Documentation=https://grafana.com/docs/
+
+[Service]
+Type=notify
+User=www
+ExecStart=/mcpaint/program/grafana/bin/grafana-server \
+              --homepath /mcpaint/program/grafana \
+              -config /mcpaint/program/grafana/conf/grafana.ini
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
