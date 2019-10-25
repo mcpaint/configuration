@@ -1,0 +1,14 @@
+[Unit]
+Description=Jenkins service
+After=network.target
+
+[Service]
+Type=simple
+User=www
+ExecStart=/usr/bin/java -jar /mcpaint/program/jenkins/jenkins.war \
+          -DJENKINS_HOME=/mcpaint/data/jenkins
+          -XX:+UseG1GC -Xms16g -Xmx16g
+          --logfile=/mcpaint/logs/jenkins/application.log
+
+[Install]
+WantedBy=multi-user.target
